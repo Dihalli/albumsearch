@@ -2,6 +2,8 @@
 var express = require('express');
 var app = express();
 
+app.set('port', (process.env.PORT || 5000));
+
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 app.use("/public", express.static('./public/'));//Can access a statid dierctory na me public
@@ -23,6 +25,6 @@ app.get('/albums', function(req, res) {
     res.render('pages/albums', {id : req.query.id});
 });
 
-app.listen(3000, function() {
-  console.log("Server started on port 3000");
+app.listen(app.get('port'), function() {
+    console.log('App is running, server is listening on port ', app.get('port'));
 });
