@@ -23,5 +23,5 @@ app.get('/albums', function(req, res) {
     res.render('pages/albums', {id : req.query.id});
 });
 
-app.listen(8080); //Location of the website on the dev server
+app.listen(process.env.port || 8080); //Location of the website on the dev server
 console.log('8080 is the magic port');
