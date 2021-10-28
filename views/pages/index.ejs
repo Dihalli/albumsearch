@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+      <div class="container">
+      <div class="row text-center">
+      <div class="searchArtist">
+        <input type="text" id="search_ArtistName" autocomplete="on" name="artist" placeholder="Search">
+        <button class="btn  btn-primary button-primary" id="get_Artist">Search</button>
+      </div>
+      </div>
+      <div id="artistInfo" class="row artistInfo"></div>
+      </div>
+
+    <footer>
+        <%- include('../partials/footer'); %>
+        <script src="public/app.js" type="text/javascript"></script>
+    </footer>
+
+</body>
+</html>

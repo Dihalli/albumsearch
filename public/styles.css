@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+
+* {
+	box-sizing: border-box;
+}
+
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 30px 0px;
+	min-height: 100vh;
+	font-family: Raleway,HelveticaNeue,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  color: #222;
+}
+
+img {
+  float: left;
+	width: 40%;
+	margin: 0% 3% 1% 0%;
+}
+
+.titleAlbum{
+	margin: 3%;
+}
+
+.imgAlbum{
+	height: 20
+	margin: 3%;
+	width: 20%;
+}
+
+li {
+
+	margin-bottom: 0;
+
+}
+
+
+.container{
+  padding:  2%;
+	}
+
+
+.btn{
+
+}
+
+.btn:hover{
+	border: none;
+  color: #FFF;
+  background-color: #33C3F0;
+  border-color: #33C3F0;
+  width: 150px;
+	margin: 1 %;
+}
+
+
+.artistInfo {
+	margin: 20px 0;
+	padding:  3% 2%  0% 4%;
+}
+
+
+.text-center {
+	text-align: center;
+	line-height: 180px;
+	line-height: 1.3;
+  letter-spacing: -.1rem;
+	}
+
+
+.searchArtist{
+top: 57%;
+left: 45%;
+padding: 0;
+border: none;
+background: none;
+}
+
+
+.videoWrapper {
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 25px;
+	height: 0;
+}
+
+
+.videoWrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}

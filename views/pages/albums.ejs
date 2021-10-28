@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+<script type="text/javascript">
+$(document).ready(function()
+{
+    fetch('https://theaudiodb.com/api/v1/json/1/album.php?i=' +   <%= id %>)
+    .then(albumRes => albumRes.json())
+    .then(albumRes =>
+      {
+        var albums = albumRes.album;
+        const albumInfoContainer = document.getElementById('albumInfoContainer')
+        createAlbum(albums, albumInfoContainer);
+
+        var counter = 0;
+        albums.forEach(function(album)
+        {
+
+          if(album.strDescriptionEN && album.strDescriptionEN != null)
+          {
+            console.log("strDescriptionEN is not null @ " + counter);
+            console.log("strDescriptionEN is not null @ " + counter);
+
+            var idOfBtnMore = "albumRead_More"+counter;
+            var idOfBtnLess = "albumRead_Less"+counter;
+            var idStrDescription = "strDescriptionEN"+counter;
+
+            const readLess = document.getElementById(idOfBtnLess);
+            const readMore = document.getElementById(idOfBtnMore);
+            const strDescriptionEN = document.getElementById(idStrDescription);
+            readLess.style.display = "none";
+            readMore.style.display = "inline-block";
+
+            readMore.addEventListener('click', function (e) {
+              e.preventDefault();
+              strDescriptionEN.innerHTML = (album.strDescriptionEN);
+              readLess.style.display = "inline-block";
+              readMore.style.display = "none";
+            });
+
+            readLess.addEventListener('click', function (e) {
+              e.preventDefault();
+              strDescriptionEN.innerHTML = (album.strDescriptionEN.substring(0,450));
+              readMore.style.display = "inline-block";
+              readLess.style.display = "none";
+            });
+
+          }
+
+          counter++;
+        });
+
+      });
+
+      const createAlbum = (albums, albumInfoContainer) => {
+        var counter = 0;
+        var innerHTML;
+         albums.forEach(function(album)
+         {
+             //concatinate each album in the loop using (newInnerHTML2 += ` )
+      	 innerHTML = `
+
+      		<div class="row ">
+      				<div class="columns eight">
+      					<img class="imgAlbum" src="${album.strAlbumThumb}" alt="Album Image" onerror="this.src='/public/albumImage.jpg'";>
+
+      					${album.strAlbum ? `<h4 class="titleAlbum"><strong>Name:</strong> ${album.strAlbum}</h4>` : ''}
+                ${album.intYearReleased ? `<p><strong>Year Released:</strong> ${album.intYearReleased}</p>` : ''}
+                ${album.strLabel ? `<p><strong>Label:</strong> ${album.strLabel}</p>` : ''}
+                ${album.strGenre ? `<p><strong>Genre:</strong> ${album.strGenre}</p>` : ''}
+
+                ${album.strDescriptionEN ? `<p><span id="strDescriptionEN${counter}">${album.strDescriptionEN.substring(0,500)}</span>
+                <a id="albumRead_More${counter}" href="#"> ... Read More </a>
+                <a id="albumRead_Less${counter}" href="#"> ... Read Less </a>
+                </p>`
+                : ''}
+
+      				</div>
+
+      		</div>
+
+      	`;
+   //up top cook the food then below put it in the albumInfoContainer
+    //Creating the html in the loop then place them in the container
+
+
+    // albumInfoContainer.innerHTML += innerHTML;
+    //   var idOfBtn = "albumRead_More"+counter;
+    //     //"albumRead_More0"
+    //   document.getElementById(idOfBtn).addEventListener('click', function (e) {
+    //     e.preventDefault();
+    //     console.log(idOfBtn);
+    //     console.log(counter);
+    //     counter++;
+    //     alert("hello");
+    //   });
+
+          albumInfoContainer.innerHTML += innerHTML;
+          counter++;
+            // var idOfBtn = "albumRead_More"+counter;
+            //   //"albumRead_More0"
+            // document.getElementById(idOfBtn).addEventListener('click', function (e) {
+            //   e.preventDefault();
+            //   console.log(idOfBtn);
+            //   console.log(counter);
+            //   counter++;
+            //   alert("hello");
+            // });
+              //idOfBtn = "";
+
+
+          // albumInfoContainer.innerHTML += innerHTML;
+
+            // try{
+            //     console.log(">>>>>>>>>>>>>"+counter);
+            //      var readLessId = $('#albumInfoContainer #strDescriptionEN'+counter+' #albumRead_Less'+counter);
+            //      var strDescriptionEN = $('#strDescriptionEN'+counter);
+            //      readLessId.on("click",function( event ) {
+            //          event.preventDefault();
+            //          strDescriptionEN.html(album.strDescriptionEN.substring(0,500));
+            //          //readMoreId.style.display = 'inline-block';
+            //          //readLessId.style.display = 'none';
+            //          readLessId.css('display','none')
+            //      });
+            //      console.log(readLessId);
+            //  } catch (error)
+            //  {
+            //      console.log(error);
+            //  }
+            //  try
+            //  {
+            //    console.log("<<<<<<<<<<<<<<<<<<"+counter);
+            //    var readMoreId = $('#albumInfoContainer #strDescriptionEN'+counter+' #albumRead_More'+counter);
+            //    var strDescriptionEN = $('#strDescriptionEN'+counter);
+            //    readMoreId.on("click",function( event ) {
+            //        event.preventDefault();
+            //        strDescriptionEN.html(album.strDescriptionEN);
+            //         //readLessId.style.display = 'inline-block';
+            //        //readMoreId.style.display = 'none';
+            //        readMoreId.css('display','none')
+            //    });
+            //   console.log(readMoreId);
+            //  } catch (error)
+            //  {
+            //    console.log(error);
+            //  }
+
+
+          });
+      }
+
+    });
+</script>
+
+  <div id="albumInfoContainer" class="row albumInfoContainer"></div>
+
+  <footer>
+      <%- include('../partials/footer'); %>
+  </footer>
+
+</body>
+</html>
