@@ -6,7 +6,7 @@ app.set('port', (process.env.PORT || 5000));
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
-app.use("/public", express.static('./public/'));//Can access a statid dierctory na me public
+app.use("/public", express.static('./public/'));//Can access a static dierctory name public
 // use res.render to load up an ejs view file
 
 // index page

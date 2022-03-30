@@ -13,7 +13,7 @@ document.getElementById("search_ArtistName").addEventListener("keyup", function(
 get_Artist_btn.addEventListener('click', () => {
   if(search_Textbox.value){
 
-	fetch('https://www.theaudiodb.com/api/v1/json/1/search.php?s=' + search_Textbox.value)
+	fetch('https://www.theaudiodb.com/api/v1/json/2/search.php?s=' + search_Textbox.value)
 		.then(res => res.json())
 		.then(res =>
 			{

@@ -8,7 +8,7 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
-    fetch('https://theaudiodb.com/api/v1/json/1/album.php?i=' +   <%= id %>)
+    fetch('https://theaudiodb.com/api/v1/json/2/album.php?i=' +   <%= id %>)
     .then(albumRes => albumRes.json())
     .then(albumRes =>
       {
